@@ -1,0 +1,89 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+    <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet">
+	<title>Animated Nav With GSAP 3.0</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+	<div class="container">
+		<div class="bars"></div>
+	</div>
+
+	<h1>Animated Nav With GSAP 3.0</h1>
+	<nav>
+		<div class="nav-menu-button">
+			<div class="close">
+				<span class="menu-label">MENU</span>
+				<div></div>
+			</div>
+		</div>
+		<div class="main-navigation">
+		
+			<img src="revitup-logo.jpg" alt="" class="logo">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+			<div class="more-details">
+				<p>Διεύθυνση: Αθανασίου Καμπέλη 4, 71304, Ηράκλειο Κρήτης<br>
+					Τηλ.: +30 2810801375 <br>
+					Κιν.: +30 6946492914<br>
+					Email: hello@revitup.direct</p>
+				<div class="social-details">
+					<a href="#"><img src="facebook.png" alt=""></a>
+					<a href="#"><img src="instagram.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+
+	</nav>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+      <script id="rendered-js" >
+		const open = document.querySelector('.container');
+		const close = document.querySelector('.close');
+		var tl = gsap.timeline({ defaults: { duration: .55, ease: 'expo.inOut' } });
+		open.addEventListener('click', () => {
+		if (tl.reversed()) {
+			tl.play();
+		} else {
+			tl.to('nav', { left: 0 }).
+			to('nav', { height: '100vh' }, '-=.15').
+			to('.close', { opacity: 1, pointerEvents: 'all'}).
+			to('.logo', { opacity: 1, pointerEvents: 'all' }, '-=.20').
+			to('nav ul li a', { opacity: 1, pointerEvents: 'all' }, '-=.20').
+			to('.more-details', { opacity: 1, pointerEvents: 'all' }, '-=.20');
+		}
+		});
+
+		close.addEventListener('click', () => {
+		tl.reverse();
+		});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
